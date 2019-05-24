@@ -36,7 +36,7 @@ echo "Found node instance role: $NODE_INSTANCE_ROLE"
 echo "Ensure that the nodes from the worker groups can join the cluster."
 # Note, the file must contain the above node instance role so we insert it before applying the template.
 cp aws-auth-cm.yaml /tmp/aws-auth-cm-temp.yaml
-sed -i 's@NODE_INSTANCE_ROLE@'$NODE_INSTANCE_ROLE'@g' /tmp/aws-auth-cm-temp.yaml
+sed -i'.bak' 's@NODE_INSTANCE_ROLE@'$NODE_INSTANCE_ROLE'@g' /tmp/aws-auth-cm-temp.yaml
 kubectl apply -f /tmp/aws-auth-cm-temp.yaml
 rm /tmp/aws-auth-cm-temp.yaml
 
